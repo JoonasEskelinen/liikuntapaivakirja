@@ -1,0 +1,138 @@
+html, body { 
+  display: flex; /* Määrittää sivun joustavasti asetelluksi */
+  flex-direction: column; /* elementit pystysuoraan */
+  min-height: 100vh; /* koko selaimen korkeudelle */
+  background: black;
+}
+
+/* NEU-BOXIT*/
+.neu-box {
+  background: rgba(0,0,0,0.3);
+  padding: 2rem;
+  border-radius: 12px;
+  color: white;
+  box-shadow: 
+  0 0 150px rgba(46,136,255,0.25); 
+}
+
+/* neu-boxien otsikot */
+.neu-box h3, .neu-box h4 { 
+  color: #ffffff;
+  font-family: 'Poppins', sans-serif; 
+  margin-bottom: 1rem; /* tilaa otsikon ja seuraavan tekstin väliin */
+  font-size: 35px;
+}
+
+.neu-box p { /* Neu-boxien sisäteksti */
+  color: #cfcfcf;
+  line-height: 1.5; /* riviväli */
+  font-size: 23px;
+}
+
+/* tekstikenttien yhteinen tyyli */
+.neu-box input[type="text"],
+.neu-box input[type="number"],
+.neu-box input[type="date"],
+.neu-box textarea {
+  width: 50%;     /* 80 % laatikon sisätilasta */
+  background: white;
+  border: none; /*ei reunaviivaa*/
+  color: black;
+  padding: 0.4rem;  /* sisätila kentän sisälle */
+  border-radius: 10px;
+  margin-top: 5px;  /* väli */
+  margin: 5px auto;  /* keskitys vaakasuunnassa */
+  display: block;   /* varmistaa että margin: auto toimii */
+  text-align: center; 
+}
+
+/* neu-boxin sisällä olevat lomakkeet */
+.neu-box form { 
+  text-align: center; 
+  margin-top: 1rem; 
+}
+
+
+
+/* YHTENÄINEN NAPPI */
+
+button,
+.btn { 
+  color: #fff !important; 
+  background: #1a1a1a; 
+  border: none; /* ei erillistä reunaviivaa */
+  border-radius: 25px; /* pyöristetyt kulmat */
+  padding: 0.8rem 1.6rem; /* sisätila napin tekstille */
+  font-weight: bold; /* lihavoitu teksti */
+  cursor: pointer; /* hiiri muuttuu osoittimeksi napin päällä */
+  text-shadow:
+    0 0 8px #2e88ff, /* lähempi hohto */
+    0 0 16px #2e88ff, /* keskihohto */
+    0 0 40px rgba(46,136,255,0.8); /* ulkokehä valo */
+
+  box-shadow: 6px 6px 12px #0e0e0e, -6px -6px 12px #262626;
+}
+
+/* kun hiiri viedään kohdalle */
+button:hover, 
+.btn:hover { 
+  transform: translateY(-3px); 
+  text-shadow:
+    0 0 10px #66aaff, 
+    0 0 25px #2e88ff, 
+    0 0 60px rgba(46,136,255,1); 
+  box-shadow: 12px 12px 20px #2e88ff, -12px -12px 20px #2e88ff;
+  background: #222; 
+}
+
+
+
+
+
+/*  säädetään toimimaan kaikilla laitteilla */
+
+@media (max-width: 992px) {
+
+  
+  .hero-content {
+    justify-content: flex-start;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  
+  .hero-header {
+    height: 320px;      /* matalampi puhelimella */
+  }
+
+  .hero-title {
+    font-size: 60px;    /* pienemmät fontit */
+  }
+
+  .hero-subtitle {
+    font-size: 32px;
+  }
+}
+
+@media (max-width: 600px) {
+
+  
+  .hero-content {
+    padding-top: 15px;
+    padding-bottom: 20px;
+  }
+  
+  
+  .hero-header {
+    height: 260px;
+
+  }
+
+  .hero-title {
+    font-size: 46px;
+  }
+
+  .hero-subtitle {
+    font-size: 26px;
+  }
+}
+
