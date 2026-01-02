@@ -19,11 +19,26 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && ($_POST["form"] ?? "") === "tallenn
 
     $aktiivinenTab = "tallenna";
 
-    $nimi  = preg_replace("/[^a-zA-Z0-9_]/", "", trim($_POST["nimi"] ?? ""));
-    $pvm   = trim($_POST["pvm"] ?? "");
-    $laji  = trim($_POST["laji"] ?? "");
-    $kesto = trim($_POST["kesto"] ?? "");
-    $tuntemukset = trim($_POST["tuntemukset"] ?? "");
+      // Nimimerkki: vain kirjaimet, numerot ja alaviiva + pituusraja
+      $nimi = preg_replace("/[^a-zA-Z0-9_]/", "", trim($_POST["nimi"] ?? ""));
+      $nimi = substr($nimi, 0, 30); // max 30 merkkiä
+
+      // Päivämäärä: suoraan lomakkeesta (HTML5 date rajoittaa jo)
+      $pvm = trim($_POST["pvm"] ?? "");
+
+      // Laji: teksti + pituusraja
+      $laji = trim($_POST["laji"] ?? "");
+      $laji = substr($laji, 0, 50); // max 50 merkkiä
+
+      // Kesto: vain kokonaisluku + järkevä haarukka
+      $kesto = (int)($_POST["kesto"] ?? 0);
+      if ($kesto < 1 || $kesto > 1440) { // max 24h
+          $kesto = 0;
+      }
+
+      // Tuntemukset: vapaa teksti + pituusraja
+      $tuntemukset = trim($_POST["tuntemukset"] ?? "");
+      $tuntemukset = substr($tuntemukset, 0, 300); // max 300 merkkiä
 
     if ($nimi && $pvm && $laji && $kesto) {
 
